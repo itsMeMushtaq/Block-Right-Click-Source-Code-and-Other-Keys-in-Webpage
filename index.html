@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Block Right Click, Source Code and Other Keys in Webpage</title>
+</head>
+
+<body>
+	<div>This is Dummy</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>		
+		$(function () {
+			$(this).bind("contextmenu", function (e) { e.preventDefault();
+				alert("Operation not Allowed!");
+			});
+		});
+
+		document.onkeydown = function (e) {
+			if ( e.ctrlKey &&
+				( 	e.keyCode === 67 || // C
+					e.keyCode === 99 || // c
+					e.keyCode === 83 || // S
+					e.keyCode === 115 || // s
+					e.keyCode === 73 || // I
+					e.keyCode === 105 || // i
+					e.keyCode === 86 || // V
+					e.keyCode === 118 || // v				 
+					e.keyCode === 85 || // U
+					e.keyCode === 117 // u 
+				 )) {
+				alert("Operation Not Allowed!");
+				return false;
+			} 
+			else if ( 
+				 e.keyCode === 123 || // F12
+				 e.keyCode === 121 // F10
+				 ) {
+				alert("Operation Not Allowed!");
+				return false;
+			}
+			else { return true; }
+		};
+		$(document).keypress("u", function (e) {
+			if (e.ctrlKey) { return false; }
+			else { return true; }
+		});
+	</script>
+</body>
+
+</html>
